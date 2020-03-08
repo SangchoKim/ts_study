@@ -42,3 +42,13 @@ const obj2: { a: (b: number, c?: string) => string } = {
 
 obj2.a(1);
 obj2.a(1, "4");
+
+const hi: any = []; // like javaScript
+
+// 타입 강제로 바꾸는 방법
+const hellos: number = 3;
+
+((hellos as unknown) as string).substr(1, 2);
+
+const div = document.createElement("div");
+const a = div as HTMLElement;
