@@ -5,5 +5,20 @@
   },
   "include": [],
   "exclude": [],
-  "extends": ""
+  // "extends": ""
 }
+/* 중요한 설정
+
+  allowJs 
+  baseUrl
+  declaration
+  esModuleInterwap
+  outdir
+  
+  target 
+  types
+  typeRoots
+  strict 시리즈
+  noimplicity 시리즈 
+  module
+*/
