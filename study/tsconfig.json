@@ -1,10 +1,11 @@
 {
   "compilerOptions": {
     "strict": true,
-    "noImplicitReturns": true
+    "noImplicitReturns": true,
+     "allowJs": true,
   },
-  "include": [],
-  "exclude": [],
+  // "include": [],
+  "exclude": ["*.js"],
   // "extends": ""
 }
 /* 중요한 설정

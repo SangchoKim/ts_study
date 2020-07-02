@@ -1,7 +1,7 @@
 interface RSP {
-  ROCK: "0";
-  SCISSORS: "-142px";
-  PAPER: "-284px";
+  readonly ROCK: "0";
+  readonly SCISSORS: "-142px";
+  readonly PAPER: "-284px";
 }
 
 let imgCoords: RSP[keyof RSP] = "0";
