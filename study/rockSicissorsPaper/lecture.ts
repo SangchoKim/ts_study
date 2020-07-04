@@ -46,6 +46,7 @@ const score = {
 };
 
 document.querySelectorAll(".btn").forEach(btn => {
+  // THIS를 쓰는 경우 첫번째 매개변수로 넣어주어야 함 
   btn.addEventListener("click", function(this: HTMLButtonElement) {
     clearInterval(interval); // setInterval 중지
     setTimeout(() => {

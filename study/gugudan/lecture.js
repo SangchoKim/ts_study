@@ -1,3 +1,4 @@
+"use strict";
 var numberOne = Math.ceil(Math.random() * 9);
 var numberTwo = Math.ceil(Math.random() * 9);
 var result = numberOne * numberTwo;

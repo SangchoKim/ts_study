@@ -1,3 +1,4 @@
+"use strict";
 var body = document.body;
 var candidate;
 var array = [];

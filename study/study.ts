@@ -98,3 +98,104 @@ const hellos: number = 3;
 
 const div = document.createElement("div");
 const a = div as HTMLElement;
+
+
+// 인터페이스
+// 인터페이스는 같은 인터페이스 이름으로 분해가 가능함
+// 인터페이스는 상속이 가능함
+
+interface ABCDF {
+ readonly A:'0',
+ readonly B:'-142px',
+ readonly C:'-284px',
+}
+
+interface ABCDF {
+  readonly D:'-512px',
+  readonly F:'-1024px',
+ }
+
+ interface Exampe {
+  a:3,
+  b:7, 
+  [key:string] :number
+ }
+
+interface Exp extends ABCDF {  // 상속
+
+}
+
+const example: Exampe = {
+  a:3,
+  b:7, 
+}
+
+const abcdf:ABCDF ={
+   A:'0',
+   B:'-142px',
+   C:'-284px',
+   D:'-512px',
+   F:'-1024px',
+}
+
+// !는 타입스크립트에서 경고창을 띄어주지만 프로그래머가 코드를 보증할 때 사용 
+function abc(imgCoords: ABCDF[keyof ABCDF]) : keyof ABCDF{
+  return (Object.keys(abcdf) as ["A", "B", "C","D","F"]).find(k => {
+    return abcdf[k] === imgCoords;
+  })!;
+}
+
+// type 
+// type 인 경우에는 인터페이스와 다르게 나눠서 사용하지 못한다. 
+// 인터페이스와 type의 차이점
+// type이 좀 더 넓은 범위, 보통 | 과 같이 쓰임 
+// 인터페이스는 객체에서 많이 사용 
+// 
+type ABCDFG = {
+  readonly A:'0',
+  readonly B:'-142px',
+  readonly C:'-284px',
+  readonly D:'-512px',
+  readonly F:'-1024px',
+ }
+
+ type A = {
+  readonly A:'0',
+ } | string;
+
+ type Hello = string | number
+
+
+  // 1. 제네릭 -> 만들때는 여유롭게, 실제로 사용할 때는 엄격하게 
+  // 2. 제네릭 제약사항(extends) -> 제네릭
+  // 3. 타입 가드 is -> 넓은 범위에서 좁은 범위로 줄여준다.
+
+  // 1번
+  interface obj<T>{
+    add: (a:T, b:T)=>T;
+  }
+
+  const q :obj<number> ={
+    add: (a, b)=>a+b
+  }
+  const w :obj<string> ={
+    add: (a, b)=>a+b
+  }
+  const e :obj<boolean> ={
+    add: (a, b)=> a
+  }
+
+  // 2번 
+
+  // 3번
+  const isSubs = function(data: Card): data is Sub {
+    if (data.cost) {
+      return true;
+    }
+    return false;
+  }
+ 
+
+ 
+
+ 
