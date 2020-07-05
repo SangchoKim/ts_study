@@ -1,14 +1,4 @@
-interface Player {
-    hero: HTMLDivElement
-    deck: HTMLDivElement
-    field: HTMLDivElement
-    cost: HTMLDivElement
-    deckData: Sub[]
-    heroData: Hero | null;
-    fieldData: Sub[]
-    chosenCard: HTMLDivElement | null // 선택한 카드 DIV
-    chosenCardData: Card | null // 선택한 카드 data
-  }
+import {Player, Card, Hero, Sub} from './types'
 
 const opponent: Player = {
     hero: document.getElementById('rival-hero') as HTMLDivElement,
@@ -34,42 +24,8 @@ const opponent: Player = {
     chosenCardData: null,
 
   };
-  interface Card {
-    att: number;
-    hp: number;
-    mine: boolean;
-    cost?: number;
-    field?: boolean;
-  }
-  
-  class Hero implements Card {
-    public att: number;
-    public hp: number;
-    public mine: boolean;
-    public field: boolean;
-    constructor(mine: boolean) {
-      this.att = Math.ceil(Math.random() * 2);
-      this.hp = Math.ceil(Math.random() * 5) + 25;
-      this.mine = mine;
-      this.field = true;
-    }
-  }
-  
-  class Sub implements Card {
-    public att: number;
-    public hp: number;
-    public field: boolean;
-    public cost: number;
-    public mine: boolean;
-    constructor(mine: boolean) {
-      this.att = Math.ceil(Math.random() * 5);
-      this.hp = Math.ceil(Math.random() * 5);
-      this.cost = Math.floor((this.att + this.hp) / 2);
-      this.mine = mine;
-      this.field = false;
-    }
-  }
 
+  
   // 타입 가드 is -> 넓은 범위에서 좁은 범위로 줄여준다.
   const isSub = function(data: Card): data is Sub {
     if (data.cost) {

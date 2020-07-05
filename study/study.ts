@@ -1,4 +1,6 @@
 
+import {Player, Card, Sub} from './jsStone/types'
+
 // 기본
 // let num: number;
 // num = 3;
@@ -197,5 +199,113 @@ type ABCDFG = {
  
 
  
+// 모듈 
+// 1. common.js 방식
+// 2. 2015 모듈 방식
+// 3. common.js + 2015 모듈방식 
+
+// 남의 라이브러리 가지고 올 때
+// 1. typeScript 로 작성된 라이브러리 
+// 2. typeScript로 index.d.ts 가 있는 라이브러리
+// 3. Definitly typed에 등록되어 있는 라이브리러
+// 4. 커스텀 d.ts
+// 5. 
+ 
+// Intersection - interface & type
+interface H {
+  hello:true
+}
+
+interface G {
+  bye:true
+}
+
+const h:H ={
+  hello:true
+}
+
+const g:G ={
+  bye:true
+}
+
+
+type W = {
+ hi:false   
+}
+
+const z: H&G&W ={
+  hello:true,
+  bye:true,
+  hi:false 
+}
+
+const y: H|G|W ={
+  hello:true,
+  bye:true,
+}
+
+// Utility type
+// 1. partail
+// 2. readonly
+// 3. pick
+// 4. omit
+// 5. extract
+// 6. returnType
+// 7. required
+// 8. thisType
+
+
+// 데코레이터 
+
+function makeGender(target: typeof Person1){
+  console.log(target);
+  return class extends target{
+    gender='male'
+  }
+}
+
+function readonly(target:any, key:any, descriptor: PropertyDescriptor):void {
+  console.log(target, key, descriptor);
+  descriptor.writable = false
+  return target;
+}
+@makeGender
+class Person1 {
+  title:string;
+  age=27;
+  constructor(title:string){
+    this.title = title;
+  }
+
+  @readonly
+  setTitle(title:string){
+    this.title = title;
+  }
+
+  @readonly
+  sayTitle() : any {
+    return this.title
+  }
 
  
+}
+@makeGender
+class Person2 {
+  title:string;
+  age=27;
+
+  constructor(title:string){
+    this.title = title;
+  }
+  
+  @readonly
+  setTitle(title:string){
+    this.title = title;
+  }
+
+  @readonly
+  sayTitle():any {
+    return this.title
+  }
+}
+
